@@ -1,8 +1,9 @@
 from rest_framework import serializers
 from .models import (
-    User, Rol, Empleado, Cliente, Categoria, Proveedor, 
+    User, Rol, Empleado, Cliente, Categoria, Proveedor,
     Talla, Marca, Prenda, Entrada, DetalleEntrada,
-    Venta, DetalleVenta, PedidoProveedor, DetallePedido
+    Venta, DetalleVenta, PedidoProveedor, DetallePedido,
+    ReclamacionPedido
 )
 
 class UserSerializer(serializers.ModelSerializer):
@@ -134,4 +135,9 @@ class UserSerializer(serializers.ModelSerializer):
 class RolSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rol
+        fields = '__all__'
+
+class ReclamacionPedidoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ReclamacionPedido
         fields = '__all__'

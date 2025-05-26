@@ -15,7 +15,8 @@ from .views import (
     EntradaViewSet,
     DetalleEntradaViewSet,
     UserViewSet,
-    RolViewSet
+    RolViewSet,
+    ReclamacionPedidoViewSet
 )
 
 router = DefaultRouter()
@@ -36,6 +37,7 @@ router.register(r'entradas', EntradaViewSet)
 router.register(r'detalles-entrada', DetalleEntradaViewSet)
 router.register(r'usuarios', UserViewSet)
 router.register(r'roles', RolViewSet)
+router.register(r"reclamaciones-pedidos", ReclamacionPedidoViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),

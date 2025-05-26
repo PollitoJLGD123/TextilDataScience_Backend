@@ -105,3 +105,10 @@ class DetallePedido(models.Model):
     cantidad = models.IntegerField()
     id_pedido_proveedor = models.ForeignKey(PedidoProveedor, on_delete=models.CASCADE, db_column='id_pedido_proveedor', related_name='detalles_pedidos')
     id_prenda = models.ForeignKey(Prenda, on_delete=models.CASCADE, db_column='id_prenda', related_name='detalles_pedidos')
+
+class ReclamacionPedido(models.Model):
+    id_reclamacion_pedido = models.AutoField(primary_key=True)
+    fecha_reclamacion = models.DateTimeField()
+    id_pedido_proveedor = models.ForeignKey(PedidoProveedor, on_delete=models.CASCADE, db_column='id_pedido_proveedor', related_name='reclamaciones_pedidos')
+    id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, db_column='id_cliente', related_name='reclamaciones_pedidos')
+    motivo = models.CharField(max_length=255)

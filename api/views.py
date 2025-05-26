@@ -63,3 +63,7 @@ class UserViewSet(viewsets.ModelViewSet):
 class RolViewSet(viewsets.ModelViewSet):
     queryset = Rol.objects.all()
     serializer_class = RolSerializer
+
+class ReclamacionPedidoViewSet(viewsets.ModelViewSet):
+    queryset = ReclamacionPedido.all()
+    serializer_class = ReclamacionPedidoSerializer
