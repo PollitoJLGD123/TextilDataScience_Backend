@@ -12,7 +12,7 @@
     "undo": "npx sequelize-cli db:migrate:undo",
     "undo:all": "npx sequelize-cli db:migrate:undo:all", 
     "migration:generate": "npx sequelize-cli migration:generate --name",
-  "seed:generate": "npx sequelize-cli seed:generate --name",
+    "seed:generate": "npx sequelize-cli seed:generate --name"
   },
   "keywords": [],
   "author": "",
