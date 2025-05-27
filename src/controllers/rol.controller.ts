@@ -1,9 +1,16 @@
-import { Request, Response, NextFunction } from 'express';
+import { Response } from 'express';
 import { Rol } from '../models/rol.model';
+import { rolSchema } from '../validators/rol.validator';
+import { RolRequest } from '../types/rol.type';
 
 export class RolController {
     // Crear un nuevo rol
-    static async create(req: Request, res: Response, next: NextFunction): Promise<void> {
+    static async create(req: RolRequest, res: Response): Promise<void> {
+        const { error } = rolSchema.validate(req.body);
+        if (error) {
+            res.status(400).json({ error: error.details[0].message });
+            return;
+        }
         try {
             const rol = await Rol.create(req.body);
             res.status(201).json(rol);
@@ -13,7 +20,7 @@ export class RolController {
     }
 
     // Obtener todos los roles
-    static async getAll(req: Request, res: Response): Promise<void> {
+    static async getAll(req: RolRequest, res: Response): Promise<void> {
         try {
             const roles = await Rol.findAll();
             res.json(roles);
@@ -23,7 +30,7 @@ export class RolController {
     }
 
     // Obtener un rol por ID
-    static async getById(req: Request, res: Response): Promise<void> {
+    static async getById(req: RolRequest, res: Response): Promise<void> {
         const { id } = req.params;
         try {
             const rol = await Rol.findByPk(id);
@@ -38,7 +45,7 @@ export class RolController {
     }
 
     // Actualizar un rol
-    static async update(req: Request, res: Response): Promise<void> {
+    static async update(req: RolRequest, res: Response): Promise<void> {
         const { id } = req.params;
         try {
             const [updated] = await Rol.update(req.body, { where: { id_rol: id } });
@@ -54,7 +61,7 @@ export class RolController {
     }
 
     // Eliminar un rol
-    static async delete(req: Request, res: Response): Promise<void> {
+    static async delete(req: RolRequest, res: Response): Promise<void> {
         const { id } = req.params;
         try {
             const deleted = await Rol.destroy({ where: { id_rol: id } });

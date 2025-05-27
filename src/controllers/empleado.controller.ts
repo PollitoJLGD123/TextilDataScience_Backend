@@ -1,10 +1,11 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import { Empleado } from '../models/empleado.model';
 import { empleadoSchema } from '../validators/empleado.validator';
+import { EmpleadoRequest } from '../types/empleado.type';
 
 export class EmpleadoController {
     // Crear un nuevo empleado
-    public static async create(req: Request, res: Response): Promise<void> {
+    public static async create(req: EmpleadoRequest, res: Response): Promise<void> {
         const { error } = empleadoSchema.validate(req.body);
         if (error) {
             res.status(400).json({ error: error.details[0].message });
@@ -20,7 +21,7 @@ export class EmpleadoController {
     }
 
     // Obtener todos los empleados (con relación a Rol)
-    public static async getAll(req: Request, res: Response): Promise<void> {
+    public static async getAll(req: EmpleadoRequest, res: Response): Promise<void> {
         try {
             const empleados = await Empleado.findAll({ include: ['rol'] });
             res.json(empleados);
@@ -30,7 +31,7 @@ export class EmpleadoController {
     }
 
     // Obtener un empleado por ID (con relación a Rol)
-    public static async getById(req: Request, res: Response): Promise<void> {
+    public static async getById(req: EmpleadoRequest, res: Response): Promise<void> {
         const { id } = req.params;
         try {
             const empleado = await Empleado.findByPk(id, { include: ['rol'] });
@@ -45,7 +46,7 @@ export class EmpleadoController {
     }
 
     // Actualizar un empleado
-    public static async update(req: Request, res: Response): Promise<void> {
+    public static async update(req: EmpleadoRequest, res: Response): Promise<void> {
         const { id } = req.params;
 
         try {
@@ -63,7 +64,7 @@ export class EmpleadoController {
     }
 
     // Eliminar un empleado
-    public static async delete(req: Request, res: Response): Promise<void> {
+    public static async delete(req: EmpleadoRequest, res: Response): Promise<void> {
         const { id } = req.params;
         try {
             const deleted = await Empleado.destroy({ where: { id_empleado: id } });
