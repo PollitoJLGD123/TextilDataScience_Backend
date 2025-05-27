@@ -1,3 +1,4 @@
+// src/models/rol.model.ts
 import { Table, Column, Model, PrimaryKey, AutoIncrement, DataType, HasMany } from 'sequelize-typescript';
 import { Empleado } from './empleado.model';
 
@@ -8,8 +9,11 @@ export class Rol extends Model {
     @Column
     id_rol!: number;
 
-    @Column(DataType.STRING(50))
+    @Column(DataType.STRING(100))
     nombre!: string;
+
+    @Column(DataType.STRING(255))
+    descripcion!: string;
 
     @HasMany(() => Empleado)
     empleados?: Empleado[];
