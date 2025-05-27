@@ -1,7 +1,23 @@
-import { Table, Column, Model, PrimaryKey, AutoIncrement, DataType, ForeignKey, BelongsTo, HasMany } from 'sequelize-typescript';
+import {
+    Table,
+    Column,
+    Model,
+    PrimaryKey,
+    AutoIncrement,
+    DataType,
+    ForeignKey,
+    BelongsTo,
+    HasMany,
+    HasOne,
+} from 'sequelize-typescript';
+
 import { Rol } from './rol.model';
 import { User } from './user.model';
 import { Venta } from './venta.model';
+import { Asistencia } from './asistencia.model';
+import { Contrato } from './contrato.model';
+import { Horario } from './horario.model';
+import { Nomina } from './nomina.model';
 
 @Table({ tableName: 'empleado', timestamps: false })
 export class Empleado extends Model {
@@ -52,4 +68,16 @@ export class Empleado extends Model {
 
     @HasMany(() => Venta)
     ventas?: Venta[];
+
+    @HasMany(() => Asistencia)
+    asistencias?: Asistencia[];
+
+    @HasMany(() => Contrato)
+    contratos?: Contrato[];
+
+    @HasOne(() => Horario)
+    horario?: Horario;
+
+    @HasOne(() => Nomina)
+    nomina?: Nomina;
 }
