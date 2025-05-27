@@ -12,9 +12,6 @@ export class Rol extends Model {
     @Column(DataType.STRING(100))
     nombre!: string;
 
-    @Column(DataType.STRING(255))
-    descripcion!: string;
-
     @HasMany(() => Empleado)
     empleados?: Empleado[];
 }

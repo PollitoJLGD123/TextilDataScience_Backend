@@ -10,17 +10,11 @@ import {
 import { Comprobante } from './comprobante.model';
 
 @Table({ tableName: 'factura', timestamps: false })
-export class Factura extends Model<Factura> {
+export class Factura extends Model<Comprobante> {
     @PrimaryKey
     @ForeignKey(() => Comprobante)
     @Column({ field: 'id_comprobante', type: DataType.BIGINT })
     id_comprobante!: number;
-
-    @Column({ type: DataType.CHAR(4), allowNull: false })
-    serie!: string;
-
-    @Column({ type: DataType.INTEGER, allowNull: false })
-    numero!: number;
 
     @Column({ field: 'ruc_emisor', type: DataType.CHAR(11), allowNull: false })
     ruc_emisor!: string;

@@ -14,6 +14,17 @@ import { PedidoProveedor } from './pedidoProveedor.model';
 import { DetallePedido } from './detallePedido.model';
 import { Rol } from './rol.model';
 import { Talla } from './talla.model';
+import { Horario } from './horario.model';
+import { Nomina } from './nomina.model';
+import { Pago } from './pago.model';
+import { Asistencia } from './asistencia.model';
+import { Contrato } from './contrato.model';
+import { Boleta } from './boleta.model';
+import { Factura } from './factura.model';
+import { Comprobante } from './comprobante.model';
+import { ClienteNatural } from './clienteNatural.model';
+import { ClienteJuridico } from './clienteJuridico.model';
+
 
 const ModelsList = [
   User,
@@ -31,7 +42,17 @@ const ModelsList = [
   DetallePedido,
   DetalleEntrada,
   Rol,
-  Talla
+  Talla,
+  Horario,
+  Nomina,
+  Pago,
+  Asistencia,
+  Contrato,
+  Boleta,
+  Factura,
+  Comprobante,
+  ClienteNatural,
+  ClienteJuridico
 ]
 
 const ModelsDictionary =  {
@@ -50,7 +71,17 @@ const ModelsDictionary =  {
   DetallePedido,
   DetalleEntrada,
   Rol,
-  Talla
+  Talla,
+  Horario,
+  Nomina,
+  Pago,
+  Asistencia,
+  Contrato,
+  Boleta,
+  Factura,
+  Comprobante,
+  ClienteNatural,
+  ClienteJuridico
 }
 
 

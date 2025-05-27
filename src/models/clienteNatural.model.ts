@@ -10,7 +10,7 @@ import {
 import { Cliente } from './cliente.model';
 
 @Table({ tableName: 'cliente_natural', timestamps: false })
-export class ClienteNatural extends Model<ClienteNatural> {
+export class ClienteNatural extends Model<Cliente> {
     @PrimaryKey
     @ForeignKey(() => Cliente)
     @Column({ field: 'id_cliente', type: DataType.BIGINT })

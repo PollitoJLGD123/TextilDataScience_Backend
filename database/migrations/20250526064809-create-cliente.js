@@ -9,13 +9,12 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
-      nombre: {
-        type: Sequelize.STRING(50),
+      tipo: {
+        type: Sequelize.STRING(20),
         allowNull: false,
-      },
-      apellido: {
-        type: Sequelize.STRING(50),
-        allowNull: false,
+        validate: {
+          isIn: [['juridico', 'natural']],
+        },
       },
       email: {
         type: Sequelize.STRING,
@@ -32,11 +31,9 @@ module.exports = {
         type: Sequelize.STRING(100),
         allowNull: false,
       },
-      dni: {
-        type: Sequelize.CHAR(8),
-        allowNull: false,
-        unique: true,
-      },
+      creado_en: {
+        type: Sequelize.DATE
+      }
     });
   },
 

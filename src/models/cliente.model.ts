@@ -28,7 +28,7 @@ export class Cliente extends Model<Cliente> {
     tipo!: 'juridico' | 'natural';
 
     @Column({ type: DataType.STRING(255), allowNull: false, unique: true })
-    correo!: string;
+    email!: string;
 
     @Column(DataType.STRING(20))
     telefono!: string;

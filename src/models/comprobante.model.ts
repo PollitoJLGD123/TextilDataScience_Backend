@@ -46,6 +46,12 @@ export class Comprobante extends Model<Comprobante> {
     @Column({ type: DataType.DECIMAL(12, 2), allowNull: false })
     total!: number;
 
+    @Column({ type: DataType.CHAR(4), allowNull: false })
+    serie!: string;
+
+    @Column({ type: DataType.INTEGER, allowNull: false })
+    numero!: number;
+
     @BelongsTo(() => Cliente)
     cliente?: Cliente;
 

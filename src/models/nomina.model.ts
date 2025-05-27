@@ -14,7 +14,7 @@ export class Nomina extends Model {
     mes!: number;
 
     @Column(DataType.INTEGER)
-    anio!: number;
+    year!: number;
 
     @Column(DataType.DECIMAL(10, 2))
     total!: number;
